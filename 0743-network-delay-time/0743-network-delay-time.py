@@ -16,13 +16,13 @@ class Solution(object):
         for src,dst,time in times:
             adj[src].append([dst,time])
         q = []
-        heapq.heappush(q,[k,0])
+        heapq.heappush(q,[0,k])
         while q:
-            dst,time = heapq.heappop(q)
+            time,dst = heapq.heappop(q)
             for i,j in adj[dst]:
                 if time+j<dis[i]:
                     dis[i] = time+j
-                    heapq.heappush(q,[i,time+j])
+                    heapq.heappush(q,[time+j,i])
         maxi = max(dis)
         if maxi == float("inf"):
             return -1
