@@ -19,6 +19,8 @@ class Solution(object):
         heapq.heappush(q,[0,k])
         while q:
             time,dst = heapq.heappop(q)
+            if time > dis[dst]:
+                continue
             for i,j in adj[dst]:
                 if time+j<dis[i]:
                     dis[i] = time+j
